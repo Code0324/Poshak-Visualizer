@@ -1,0 +1,32 @@
+# ============================================================
+# FabricToModel — Backend Dependencies
+# Install with: pip install -r requirements.txt
+# ============================================================
+
+# ── Core Framework ──────────────────────────────────────────
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-dotenv==1.0.1
+pydantic==2.9.1
+pydantic-settings==2.5.2
+
+# ── File Upload & HTTP ──────────────────────────────────────
+python-multipart==0.0.9    # For multipart/form-data (image uploads)
+httpx==0.27.2              # Async HTTP client for calling external APIs
+
+# ── Phase 2+: Cloudinary ────────────────────────────────────
+cloudinary==1.41.0
+
+# ── Phase 3+: AI / Replicate ────────────────────────────────
+replicate==0.34.1          # Replicate Python client (SAM + IDM-VTON)
+
+# ── Phase 5+: Claude / Anthropic ────────────────────────────
+anthropic==0.34.2
+
+# ── Phase 6+: Database ──────────────────────────────────────
+psycopg2-binary==2.9.9     # PostgreSQL driver
+prisma==0.15.0             # Prisma Python client
+
+# ── Phase 6+: Async Queue ───────────────────────────────────
+celery==5.4.0
+redis==5.0.8

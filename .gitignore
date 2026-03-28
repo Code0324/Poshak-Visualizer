@@ -1,0 +1,36 @@
+# ── Node / Next.js ───────────────────────────────────────────
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+.env
+*.egg-info/
+.pytest_cache/
+
+# ── Environment variables ─────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── OS ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editors ──────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+
+# ── Logs ─────────────────────────────────────────────────────
+*.log
+npm-debug.log*
