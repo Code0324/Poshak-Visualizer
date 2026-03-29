@@ -10,9 +10,10 @@ from dotenv import load_dotenv
 
 from routers import health, upload, generate
 
-# Load environment variables from .env file
+# ── Load environment variables ─────────────────────────────
 load_dotenv()
 
+# ── Initialize FastAPI app ────────────────────────────────
 app = FastAPI(
     title="FabricToModel API",
     description=(
@@ -26,8 +27,8 @@ app = FastAPI(
     openapi_url="/api/openapi.json",
 )
 
-# ── CORS ────────────────────────────────────────────────────────────────────
-# Allow the Next.js frontend (and any preview URLs) to call the API.
+# ── CORS ────────────────────────────────────────────────────
+# Allow frontend calls (Next.js or localhost)
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 app.add_middleware(
@@ -38,28 +39,35 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Routers ──────────────────────────────────────────────────────────────────
+# ── Root endpoint ──────────────────────────────────────────
+@app.get("/")
+def root():
+    return {"message": "FabricToModel Backend is running!"}
+
+# ── Debug: List all routes ─────────────────────────────────
+@app.get("/routes")
+def list_routes():
+    return [{"path": route.path, "name": route.name} for route in app.routes]
+
+# ── Routers ────────────────────────────────────────────────
 app.include_router(health.router, prefix="/api", tags=["health"])
 app.include_router(upload.router, prefix="/api", tags=["upload"])
 app.include_router(generate.router, prefix="/api", tags=["generate"])
 
-# Phase 3:
+# ── Optional: Future routers (commented) ───────────────────
 # from routers import segmentation
 # app.include_router(segmentation.router, prefix="/api", tags=["segmentation"])
 
-# Phase 4:
 # from routers import tryon
 # app.include_router(tryon.router, prefix="/api", tags=["try-on"])
 
-# Phase 5:
 # from routers import styling
 # app.include_router(styling.router, prefix="/api", tags=["styling"])
 
-# Phase 6:
 # from routers import results
 # app.include_router(results.router, prefix="/api", tags=["results"])
 
-
+# ── Run server ─────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
 
@@ -67,5 +75,5 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=True,  # Auto-reload on file changes in development
+        reload=True,  # Auto-reload in development
     )
