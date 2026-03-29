@@ -12,7 +12,10 @@ pydantic-settings==2.5.2
 
 # ── File Upload & HTTP ──────────────────────────────────────
 python-multipart==0.0.9    # For multipart/form-data (image uploads)
-httpx==0.27.2              # Async HTTP client for calling external APIs
+httpx==0.27.2     
+requests==2.31.0
+
+ # Async HTTP client for calling external APIs
 
 # ── Phase 2+: Cloudinary ────────────────────────────────────
 cloudinary==1.41.0
