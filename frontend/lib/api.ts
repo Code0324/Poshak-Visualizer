@@ -21,5 +21,6 @@ export async function uploadImage(file: File): Promise<UploadResult> {
 
 export function imageUrl(path: string): string {
   if (path.startsWith("http")) return path;
-  return `http://localhost:8000${path}`;
+  const base = process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, "") ?? "http://localhost:8000";
+  return `${base}${path}`;
 }
