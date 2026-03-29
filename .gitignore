@@ -38,3 +38,8 @@ backend/venv/
 backend/venv2/
 backend/venv_new/
 frontend/node_modules/
+backend/venv/
+backend/venv2/
+backend/venv_new/
+frontend/node_modules/
+frontend/.next/
